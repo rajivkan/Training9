@@ -18,8 +18,10 @@
 		<img src="images/apple.jpeg">
 		<br>
 		<img src="images/On.png" id="imgOnOff">
+		<button onclick="clearTimer()">Stop Changing Image</button>
+		<button onclick="stratTimer()">Start Changing Image</button>
 		<script type="text/javascript">
-			setInterval(changeImage, 200);
+			var timer = setInterval(changeImage, 2000);
 
 			 function changeImage(){
 				if(document.getElementById("imgOnOff").src.match("Off.png")){
@@ -33,6 +35,14 @@
 			setTimeout(function(){
 				alert("Called.");
 			}, 2000);
+
+			function clearTimer(){
+				clearInterval(timer);
+			}
+
+			function stratTimer(){
+				timer = setInterval(changeImage, 200);
+			}
 		</script>
 	</body>
 </html>

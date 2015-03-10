@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			//var name = prompt("Enter your Name: ");
+			//alert(name);
+
+			// var flag = confirm("Are you sure you want to delete?");
+			// if(flag){
+			// 	alert("Record has been deleted.");
+			// }
+			// else{
+			// 	alert("You clicked cancel.");
+			// }
+
+		</script>
+	</head>
+	<body>
+		<img src="images/apple.jpeg">
+		<br>
+		<img src="images/On.png" id="imgOnOff">
+		<script type="text/javascript">
+			setInterval(changeImage, 200);
+
+			 function changeImage(){
+				if(document.getElementById("imgOnOff").src.match("Off.png")){
+					document.getElementById("imgOnOff").src = "images/On.png";
+				}
+				else{
+					document.getElementById("imgOnOff").src = "images/Off.png";
+				}
+			}
+
+			setTimeout(function(){
+				alert("Called.");
+			}, 2000);
+		</script>
+	</body>
+</html>

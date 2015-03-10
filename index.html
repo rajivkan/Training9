@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<script type="text/javascript">
+
+			function AssignText(){
+				document.getElementById("div1").innerHTML = "Div 1 javascript"
+				//document.getElementById("div1").className = "div-class2"
+				document.getElementById("div1").style.color = "yellow"
+			}
+
+			function AssignTextByClass(){
+				//alert(document.getElementsByClassName("div").length);
+				document.getElementsByClassName("div-class")[0].innerHTML = "Modified content by class name"
+				document.getElementsByClassName("div-class")[1].innerHTML = "Modified div 2 content by class name"
+			}
+
+			function AssignTextByTag(){
+				//alert(document.getElementsByTagName("button").length)
+				document.getElementsByTagName("div")[0].innerHTML = "Modified content by tag name"
+				document.getElementsByTagName("div")[1].innerHTML = "Modified div 2 content by tag name"
+			}
+
+			function getDivData(){
+				alert(document.getElementById("div1").innerHTML);
+			}
+
+			function onLoadPage(){
+				//alert("Page loaded");
+			}
+
+		</script>
+
+		<style type="text/css">
+
+			/*.div-class{
+				color:green;
+				font-size: 30px;
+				background: #cccccc;
+			}
+
+			.div-class2{
+				color: blue;
+				font-size: 20px;
+				background: #ff00ff;
+			}*/
+
+			div{
+				color:#ff0000;
+			}
+
+		</style>
+
+	</head>
+
+	<body onload="onLoadPage()">
+		<div id="div1" class="div-class">Div 1 Element</div>
+		<div id="div2" class="div-class">Div 2 Element</div>
+		<button onclick="AssignText()"> Click Me</button>
+		<button onclick="AssignTextByClass()"> By Class</button>
+		<button onclick="AssignTextByTag()"> By Tag</button>
+
+		<button onclick="getDivData()">get Div Data</button>
+		<!-- <p></p>
+		<span></span> -->
+	</body>
+</html>

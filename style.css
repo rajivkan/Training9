@@ -1,0 +1,39 @@
+/* tag based css */
+body{
+	background: #cccaaa;
+}
+
+div{
+	background: red;
+}
+
+span{
+	color: green;
+}
+/* end tag based css */
+
+/* class based css */
+.div-class{
+	font-size: 20px;
+	background: green;
+}
+
+.span-class{
+	text-decoration: underline;
+}
+/* end class based css */
+
+/* id based css */
+#div1, #div2{
+	color: #ff00ff;
+	font-weight: bold;
+	font-size: 30px;
+	width: 50%;
+}
+
+#span1{
+	color: blue;
+	font-weight: bold;
+	font-size: 30px;
+}
+/* end id based css */

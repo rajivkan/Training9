@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<style type="text/css">
+			table, td, tr{
+				border: 1px #333 solid;
+			}
+		</style>
+		<script type="text/javascript">
+			function onValidate(){
+				var name = document.getElementById("txtName");
+				var email = document.getElementById("txtEmail");
+				var address = document.getElementById("txtAddress");
+
+				if(name.value == ""){
+					alert("Name is required.");
+					name.focus();
+					return false;
+				}
+				if(email.value == ""){
+					alert("Email is required.");
+					email.focus();
+					return false;
+				}
+
+				var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    			if(!re.test(email.value)){
+    				alert("Email is not in correct format.");
+    				email.focus();
+    				return false;
+    			}
+
+
+				if(address.value == ""){
+					alert("Address is required.");
+					address.focus();
+					return false;
+				}
+
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="http://localhost/test/register.php" method="GET">
+			<table style="width:400px" cellspacing="0" cellpadding="5">
+				<tr>
+					<td>
+						Name:
+					</td>
+					<td>
+						<input type="text" id="txtName" name="username">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Email:
+					</td>
+					<td>
+						<input type="text" id="txtEmail" name="email">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Address:
+					</td>
+					<td>
+						<input type="text" id="txtAddress" name="address">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center">
+						<input type="submit" value="Submit" onclick="return onValidate()">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

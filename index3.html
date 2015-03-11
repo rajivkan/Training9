@@ -20,6 +20,7 @@
 		<img src="images/On.png" id="imgOnOff">
 		<button onclick="clearTimer()">Stop Changing Image</button>
 		<button onclick="stratTimer()">Start Changing Image</button>
+		<label id="lblTime" style="float:right"></label>
 		<script type="text/javascript">
 			var timer = setInterval(changeImage, 2000);
 
@@ -33,7 +34,7 @@
 			}
 
 			setTimeout(function(){
-				alert("Called.");
+				//alert("Called.");
 			}, 2000);
 
 			function clearTimer(){
@@ -43,6 +44,16 @@
 			function stratTimer(){
 				timer = setInterval(changeImage, 200);
 			}
+
+			setInterval(function(){
+				var d = new Date();
+
+				var m_names = new Array("January", "February", "March", 
+							"April", "May", "June", "July", "August", "September", 
+							"October", "November", "December");
+				// January 22, 2015 Time
+				document.getElementById("lblTime").innerHTML = m_names[d.getMonth()] +" "+ d.getDate()+", "+d.getFullYear()+" | "+ d.toLocaleTimeString()
+			}, 1000);
 		</script>
 	</body>
 </html>

@@ -7,36 +7,36 @@
 		</style>
 		<script type="text/javascript">
 			function onValidate(){
-				var name = document.getElementById("txtName");
-				var email = document.getElementById("txtEmail");
-				var address = document.getElementById("txtAddress");
+				// var name = document.getElementById("txtName");
+				// var email = document.getElementById("txtEmail");
+				// var address = document.getElementById("txtAddress");
 
-				if(name.value == ""){
-					alert("Name is required.");
-					name.focus();
-					return false;
-				}
-				if(email.value == ""){
-					alert("Email is required.");
-					email.focus();
-					return false;
-				}
+				// if(name.value == ""){
+				// 	alert("Name is required.");
+				// 	name.focus();
+				// 	return false;
+				// }
+				// if(email.value == ""){
+				// 	alert("Email is required.");
+				// 	email.focus();
+				// 	return false;
+				// }
 
-				var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    			if(!re.test(email.value)){
-    				alert("Email is not in correct format.");
-    				email.focus();
-    				return false;
-    			}
+				// var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    // 			if(!re.test(email.value)){
+    // 				alert("Email is not in correct format.");
+    // 				email.focus();
+    // 				return false;
+    // 			}
 
 
-				if(address.value == ""){
-					alert("Address is required.");
-					address.focus();
-					return false;
-				}
+				// if(address.value == ""){
+				// 	alert("Address is required.");
+				// 	address.focus();
+				// 	return false;
+				// }
 
-				return true;
+				// return true;
 			}
 		</script>
 	</head>
@@ -48,7 +48,7 @@
 						Name:
 					</td>
 					<td>
-						<input type="text" id="txtName" name="username">
+						<input type="text" id="txtName" name="username" required>
 					</td>
 				</tr>
 

@@ -1,0 +1,173 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function onValidate(){
+				var name = document.getElementById("txtName");
+				var email = document.getElementById("txtEmail");
+				var address = document.getElementById("txtAddress");
+
+				if(name.value == ""){
+					alert("Name is required.");
+					name.focus();
+					return false;
+				}
+				if(email.value == ""){
+					alert("Email is required.");
+					email.focus();
+					return false;
+				}
+
+				var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    			if(!re.test(email.value)){
+    				alert("Email is not in correct format.");
+    				email.focus();
+    				return false;
+    			}
+
+
+				if(address.value == ""){
+					alert("Address is required.");
+					address.focus();
+					return false;
+				}
+
+				addUpdateRecord(name.value, email.value, address.value)
+
+				name.value = "";
+				email.value = "";
+				address.value = "";
+				return true;
+			}
+
+			var arrayData = [];
+			function addUpdateRecord(name, email, address){
+				if(document.getElementById("btnSubmit").value == "Submit"){
+					var obj = {};
+					obj.id = Math.random();
+					obj.name = name;
+					obj.email = email;
+					obj.address = address;
+					arrayData.push(obj);
+				}
+				else{
+					updateRecord.name = name;
+					updateRecord.email = email;
+					updateRecord.address = address;
+					document.getElementById("btnSubmit").value = "Submit";
+				}
+				
+				displayRecord();
+			}
+
+			function displayRecord(){
+				var strRecord = "<tr style='font-weight: bold'><td>Name</td><td>Email</td><td>Address</td><td>Action</td></tr>";
+
+				for(var i=0; i<arrayData.length; i++){
+					strRecord += "<tr><td>" + arrayData[i].name + "</td><td>" + arrayData[i].email + "</td><td>" + arrayData[i].address + "</td><td><button onclick='onFillData("+ arrayData[i].id +")'>Update</button> &nbsp;&nbsp; <button onclick='onDelete("+ arrayData[i].id +")'>Delete</button></td></tr>";
+				}
+
+				document.getElementById("tblRecord").innerHTML = strRecord;
+			}
+
+			var updateRecord = {};
+			function onFillData(id){
+				for(var i=0; i<arrayData.length;i++){
+					if(arrayData[i].id == id){
+						updateRecord = arrayData[i];
+						document.getElementById("txtName").value = updateRecord.name;
+						document.getElementById("txtEmail").value = updateRecord.email;
+						document.getElementById("txtAddress").value = updateRecord.address;
+						document.getElementById("btnSubmit").value = "Update";
+						break;
+					}
+				}
+			}
+
+			function onDelete(id){
+				if(confirm("Are you sure you want to delete this record?")){
+					for(var i=0; i<arrayData.length;i++){
+						if(arrayData[i].id == id){
+							arrayData.splice(i, 1);
+							displayRecord();
+							break;
+						}
+					}
+				}
+			}
+
+			function onCancel(){
+				document.getElementById("txtName").value = "";
+				document.getElementById("txtEmail").value = "";
+				document.getElementById("txtAddress").value = "";
+				document.getElementById("btnSubmit").value = "Submit";
+			}
+		</script>
+		<style type="text/css">
+			#tblRecord{
+				border: 1px #333 solid;
+			}
+			#tblRecord tr, #tblRecord td{
+				border: 1px #333 solid;
+			}
+		</style>
+	</head>
+	<body>
+		<table style="widtd: 100%">
+			<tr>
+				<td style="width:30%">
+
+
+					<table style="width:100%" cellspacing="0" cellpadding="5">
+						<tr>
+							<td>
+								Name:
+							</td>
+							<td>
+								<input type="text" id="txtName" name="username" required>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								Email:
+							</td>
+							<td>
+								<input type="text" id="txtEmail" name="email" required email>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								Address:
+							</td>
+							<td>
+								<input type="text" id="txtAddress" name="address" required>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<input type="button" value="Cancel" onclick="onCancel()">
+							</td>
+							<td style="text-align:center">
+								<input id="btnSubmit" type="submit" value="Submit" onclick="return onValidate()">
+							</td>
+						</tr>
+					</table>
+
+
+				</td>
+				<td style="vertical-align: top" style="width: 70%">
+						<table id="tblRecord" style="width:100%">
+							<tr>
+								<td>
+									Record not found!
+								</td>
+							</tr>
+						</table>
+				</td>
+			</tr>
+		</table>
+		
+	</body>
+
+</html>

@@ -1,0 +1,18 @@
+<html>
+	<head>
+
+	</head>
+	<body onload="onLoad()">
+
+		<script type="text/javascript">
+		function onLoad(){
+			navigator.geolocation.getCurrentPosition(getLocation);
+
+			function getLocation(result){
+				alert(JSON.stringify(result));
+			}
+		}
+			
+		</script>
+	</body>
+</html>

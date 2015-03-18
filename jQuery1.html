@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript">
+
+			function onClickMe(){
+				//$("#div2").html($("#txt1").val());
+				$("#div2").text($("#txt1").val())
+
+				/*
+					// id
+					$("#div1").html()
+
+					// tag
+					$("div").text(); // it will access first element only
+
+					// class 
+					$(".abc").text(); // it will access first element only
+				*/
+
+				// to declare the id
+				//$("#div1 span p").attr("id", "p1234567")
+			}
+		</script>
+		<style type="text/css">
+			.abc{
+				color: red;
+			}
+			.abc123{
+				color: blue;
+				font-size: 30px
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1" class="abc">Div 1
+			<span id="span1"> Span 1
+				<label>label 12344</label>
+				<p>p 1233</p>
+			</span>
+			<h1 id="span2"> H1</h1>
+			<p>P 1</p>
+			<h2>H2</h2>
+			<h3>H3</h3>
+			<label><div> text div label </div> </label>
+			<a href="">a 1</a>
+			<img src="images/apple.jpeg">
+			<strong>strong 1</strong>
+		</div>
+
+		<div id="div2">Div 2</div>
+		<span id="span2"> Span 2</span>
+		<textarea id="txt1" row="10" style="height: 100px width: 200px"></textarea>
+
+		<button onclick="onClickMe()"> Click Me</button>
+	</body>
+</html>

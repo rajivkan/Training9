@@ -1,0 +1,54 @@
+$("#div1 span label")
+[]
+$("#div1 span")
+[]
+$("#div1 span p")
+
+$("#div1 span p").html("<font style='color: #ff0000'>sdfs f sdf sdf sd fs df sdf sd fds f ds f</font>")
+[]
+$("#div1 span p")
+[]
+$("#div1 span p").attr("id", "para1")
+[]
+$("#div1 span p").attr("style", "color: #ff00ff")
+[]
+$("#div1 span p").html("<font style='color: #ff0000'>sdfs f sdf sdf sd fs df sdf sd fds f ds f</font>  sadfsdf sd fds fs df sdf sd fds f dssdf sdf dsf s")
+[]
+$("#div1 span p").attr("style")
+"color: #ff00ff"
+$("#div1 span p").css("color")
+"rgb(255, 0, 255)"
+$("#div1 span p").css("color", "blue")
+[]
+$("#div1 span p").css("color")
+"rgb(0, 0, 255)"
+$("#div1 span p").attr("style", "color: #ff00ff; font-weight: bold")
+[]
+$("#div1 span p").attr("style", "color: #ffcccc;")
+[]
+$("#div1 span p").attr("style", "color: #ff00ff; font-weight: bold")
+[]
+$("#div1 span p").css("color", "#ffcccc;")
+[]
+$("#div1 span p").css("color", "#ffcccc")
+[]
+
+
+$("#div1").active("abc123")
+VM1170:2 Uncaught TypeError: undefined is not a function
+$("#div1").addClass("abc123")
+[]
+$("#div1").removeClass("abc123")
+[]
+$("#div1").removeClass("abc")
+[]
+$("#div1").addClass("abc123")
+[]
+$("#div1").addClass("abc1sdfds")
+[]
+$("#div1").removeClass("abcsfd")
+[]
+$("#div1").removeClass("abc")
+[]
+$("#div1").removeClass("abc123")
+[]

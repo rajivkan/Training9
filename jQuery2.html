@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript">
+			// javascript event
+			window.addEventListener("load", function(event){
+				alert("document is loaded.");
+
+				var btn = document.createElement("button");
+				btn.innerHTML = "javascript button";
+				// btn.onclick = function(){
+				// 	alert("javascript button is fired.");
+				// }
+				btn.addEventListener("click", function(){
+					alert("javascript button is fired by addEventListener.");
+					var evt = new CustomEvent("CUSTOM_EVENT");
+					evt.user = {"name": "Raj", "address": "Bangalore"}
+					window.dispatchEvent(evt);
+				})
+				document.getElementById("body1").appendChild(btn);
+			})
+
+			// javascript event
+			window.addEventListener("click", onLoad);
+
+			function onLoad(event){
+				//alert("X: "+event.clientX+"   Y: "+event.clientY);
+
+				//event.target // will return particular element where you clicked
+
+				// event.currentTarget  // will return the event element
+
+				try{
+					var x = document.getElementById("sdfsdf").innerHTML/0;
+				}
+				catch(err){
+					console.log(err.message);
+				}
+
+				//alert("asdsadsa");
+			}
+
+			$(document).ready(function(){
+				//alert("jQuery document ready event");
+				alert(document.getElementById("div1").innerHTML);
+
+				var btn = $("<button></button>");
+				btn.html("Click Me");
+				btn.click(function(){
+					alert("button clicked");
+				})
+				$("body").append(btn);
+			});
+
+			window.addEventListener("CUSTOM_EVENT", function(event){
+				alert(JSON.stringify(event.user));
+			});
+
+		</script>
+	</head>
+	<body id="body1">
+
+		<div id="div1">Div 1</div>
+	</body>
+</html>

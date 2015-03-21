@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var name = $("#txtName");
+				var address = $("#txtAddress");
+				var email = $("#txtEmail");
+				$("#btnSubmit").click(function(){
+					var validation = [];
+					if(name.val() == ""){
+						validation.push("Name is required.");
+					}
+					if(address.val() == ""){
+						validation.push("Address is required.");
+					}
+					if(email.val() == ""){
+						validation.push("Email is required.");
+					}
+					var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	    			if(!re.test(email.val()) && email.val() != ""){
+	    				validation.push("Email is not in correct format.");
+	    			}
+	    			if(validation.length == 0){
+	    				//alert("Form is valid");
+	    				
+	    				var request = {};
+	    				// to GET method
+		    				//request.url = "http://localhost/test/register.php?uname="+name.val()+"&address="+address.val()+"&email="+email.val();
+		    				//request.method = "GET";
+	    				
+	    				// to POST method
+	    				request.url = "http://localhost/test/register.php";
+	    				request.method = "POST";
+	    				request.data = {"uname": name.val(), "address": address.val(), "email": email.val()};
+
+	    				$.ajax(request).done(function(result){
+	    					//alert(result);
+	    					var studentArray = JSON.parse(result).data;
+	    					$("#studentNames").html(studentArray.join("<br>"));
+
+	    				}).error(function(err){
+	    					alert("There are some error. Please try again.");
+	    				})
+	    			}
+	    			else{
+	    				alert(validation.join("\n"));
+	    			}
+
+				});
+			});
+		</script>
+	</head>
+	<style type="text/css">
+		table{
+			width: 300px;
+		}
+	</style>
+	<body>
+		<table>
+			<tr>
+				<td>
+					Name:
+				</td>
+				<td>
+					<input id="txtName">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Address:
+				</td>
+				<td>
+					<input id="txtAddress">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Email:
+				</td>
+				<td>
+					<input id="txtEmail">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					
+				</td>
+				<td>
+					<input type="button" id="btnSubmit" value="Submit">
+				</td>
+			</tr>
+		</table>
+		<div id="studentNames"></div>
+	</body>
+</html>

@@ -37,8 +37,12 @@
 	    				$.ajax(request).done(function(result){
 	    					//alert(result);
 	    					var studentArray = JSON.parse(result).data;
-	    					$("#studentNames").html(studentArray.join("<br>"));
-
+	    					//$("#studentNames").html(studentArray.join("<br>"));
+	    					var str = "<tr><td>Name</td><td>Email</td></tr>"
+	    					$.each(studentArray, function(index, item){
+	    						str += "<tr><td>"+ item.name +"</td><td>"+ item.email +"</td></tr>"
+	    					});
+	    					$("#tblRecord").html(str);
 	    				}).error(function(err){
 	    					alert("There are some error. Please try again.");
 	    				})
@@ -92,5 +96,9 @@
 			</tr>
 		</table>
 		<div id="studentNames"></div>
+
+		<table id="tblRecord">
+
+		</table>
 	</body>
 </html>

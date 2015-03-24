@@ -1,0 +1,21 @@
+<html ng-app="testApp">
+	<head>
+		<script type="text/javascript" src="js/lib/angular.min.js"></script>
+		<script type="text/javascript">
+
+			var testAppModule = angular.module("testApp", []);
+			testAppModule.controller("messageControler", ["$scope", function($scope){
+					$scope.message = "Welome to AngularJs";
+					$scope.username = "Rajesh";
+				}
+			]);
+
+		</script>
+	</head>
+
+	<body>
+		<div ng-controller="messageControler">
+			{{message}}, {{username}}
+		</div>
+	</body>
+</html>

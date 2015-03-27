@@ -7,15 +7,30 @@
 			testAppModule.controller("messageControler", ["$scope", function($scope){
 					$scope.message = "Welome to AngularJs";
 					$scope.username = "Rajesh";
+					$scope.onClick = function(){
+						alert($scope.username)
+					};
+					$scope.arrayData = ["Student 1", "Student 2", "Student 3", "Amit Kumar", "Rajesh Kumar", "Sai"];
 				}
 			]);
 
 		</script>
 	</head>
 
-	<body>
-		<div ng-controller="messageControler">
+	<body ng-controller="messageControler">
+		<div>
 			{{message}}, {{username}}
 		</div>
+		<div>
+			DIV 2 {{username}}
+		</div>
+		
+		<button ng-click="onClick()">Click Me</button>
+
+
+		<br>
+		<input ng-model="studentname"><br>
+
+		<span ng-repeat="student in arrayData | filter:studentname | orderBy:'':true">{{ student }}<br></span>
 	</body>
 </html>

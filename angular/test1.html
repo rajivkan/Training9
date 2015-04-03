@@ -1,0 +1,27 @@
+<!Doctype html>
+<html>
+	<head>
+	<script src="js/lib/angular.min.js"></script>
+	</head>
+	<body >
+	<div ng-app="App" ng-controller="messageControler">
+		Name:<input type="text" ng-model="Name"><br>
+		Address:<input type="text" ng-model="Address"><br>
+		</br>
+		<span>{{ fadd() }}</span>
+        </div>
+	 	<br>
+
+    	<script type="text/javascript">
+			var awe = angular.module("App", []);
+			awe.controller("messageControler",["$scope", function($scope){
+					$scope.Name = "sunil";
+					$scope.Address = "usa";
+					$scope.fadd=function(){
+						return $scope.Name+" "+$scope.Address;
+					}
+					}]);
+										
+		</script>
+	</body>
+</html>

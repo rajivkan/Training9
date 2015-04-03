@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="testApp">
+<head>
+	<script type="text/javascript" src="js/lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery-1.11.2.min.js"></script>
+
+
+	<script type="text/javascript">
+
+		var testAppModule = angular.module("testApp", ["ngRoute"]);
+
+		testAppModule.config(["$routeProvider", function($routeProvider){
+			$routeProvider
+				.when("/", {
+					templateUrl: "templates/home.html",
+					controller: "homeController"
+				})
+				.when("/about", {
+					templateUrl: "templates/about.html",
+					controller:"aboutController"
+				})
+				.when("/contact", {
+					templateUrl: "templates/contact.html"
+				})
+		}]);
+
+		testAppModule.controller("homeController",["$scope","$http", "$routeParams", function($scope, $http, $routeParams){
+			$scope.homeMessage = "Welcome "+ ($routeParams.uname ? $routeParams.uname : "Guest");
+			var request = {};
+			request.url = "http://localhost/test/register.php";
+	    	request.method = "GET";
+	    	$http(request).success(function(result){
+	    		$scope.students = result.data;
+	    	})
+	    	.error(function(err){
+	    		alert("Unable to load data");
+	    	})
+		}]);
+
+		testAppModule.directive("login", function(){
+			return {
+				restrict: "C", // E A C M
+				templateUrl: "templates/login.html",
+				controller: "loginController"
+			}
+		});
+
+		testAppModule.controller("aboutController", ["$scope", function($scope){
+			$scope.aboutMessage = "App Aboutus"
+		}]);
+
+		testAppModule.controller("loginController", ["$scope", function($scope){
+			$scope.username = "";
+			$scope.password = "";
+			$scope.onLogin = function(){
+				if($scope.username == "admin" && $scope.password == "password"){
+					alert("login successfull");
+					window.location.href = "#/?uname="+ $scope.username;
+				}
+				else{
+					alert("Username or Password is invalid. Please try again.");
+				}
+			}
+		}])
+
+
+	</script>
+
+	<style type="text/css">
+
+		body{
+			margin: 0;
+			padding: 0;
+		}
+
+	</style>
+</head>
+
+<body>
+	<table style="width:100%">
+		<tr>
+			<td id="headerSection" colspan="2" style="text-align:center; height:80px; background: #ff0000">
+				Welcome to Angular JS
+			</td>
+		</tr>	
+
+		<tr id="mainSection">
+			<td style="width:150px; vertical-align:top">
+				<a href="#/">Home</a>
+				<br>
+				<a href="#/about">About</a>
+				<br>
+				<a href="#/contact">Contact</a>
+				
+			</td>
+			<td ng-view style="vertical-align:top">
+				
+			</td>
+		</tr>
+
+		<tr>
+			<td id="footerSection" colspan="2" style="text-align:center; height:30px; background: #cccccc">
+				Footer content
+			</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		$("#mainSection").height($(document).height()-$("#headerSection").height()-$("#footerSection").height() - 10);
+	</script>
+</body>
+</html>

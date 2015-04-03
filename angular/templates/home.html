@@ -1,0 +1,32 @@
+<div>
+	{{homeMessage}}
+	
+	<!-- <login></login> -->
+	<!-- <div login></div> -->
+
+
+
+	<!-- <div class="login"></div> -->
+
+<br>
+<br>
+	Search: &nbsp;&nbsp;&nbsp; <input ng-model="sname"><br>
+
+		<table style="width: 400px">
+			<tr style="font-weight:bold;">
+				<td>Name</td>
+				<td>Email</td>
+			</tr>
+			<tr ng-repeat="studentObj in students | filter:sname | orderBy:'name':false">
+				<td>
+					{{ studentObj.name }}
+				</td>
+				<td>
+					{{studentObj.email}}
+				</td>
+			</tr>
+
+		</table>
+
+
+</div>

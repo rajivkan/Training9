@@ -7,10 +7,13 @@
 			testAppModule.controller("messageControler", ["$scope", function($scope){
 					$scope.message = "Welome to AngularJs";
 					$scope.username = "Rajesh";
+					$scope.studentname = "Student";
 					$scope.onClick = function(){
-						alert($scope.username)
+						alert($scope.studentname)
 					};
 					$scope.arrayData = ["Student 1", "Student 2", "Student 3", "Amit Kumar", "Rajesh Kumar", "Sai"];
+
+					$scope.arrayData2 = [{name:"Student 1", address: "Delhi"}, {name:"Student 2", address: "Bangalore"}, {name:"Gopal", address: "Chennai"}, {name:"Amit Kumar", address: "Mumbai"}, {name:"Rajesh", address: "Goa"}, {name:"Sai", address: "Hydrabad"}];
 				}
 			]);
 
@@ -25,6 +28,9 @@
 			DIV 2 {{username}}
 		</div>
 		
+		<br>
+		Bind: 
+		<div ng-bind="studentname"></div>
 		<button ng-click="onClick()">Click Me</button>
 
 
@@ -32,5 +38,26 @@
 		<input ng-model="studentname"><br>
 
 		<span ng-repeat="student in arrayData | filter:studentname | orderBy:'':true">{{ student }}<br></span>
+
+		<br>
+		<br>
+		<input ng-model="sname"><br>
+
+		<table style="width: 400px">
+			<tr style="font-weight:bold;">
+				<td>Name</td>
+				<td>Address</td>
+			</tr>
+			<tr ng-repeat="studentObj in arrayData2 | filter:sname | orderBy:'address':false">
+				<td>
+					{{ studentObj.name }}
+				</td>
+				<td>
+					{{studentObj.address}}
+				</td>
+			</tr>
+
+		</table>
+
 	</body>
 </html>
